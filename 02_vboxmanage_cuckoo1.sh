@@ -10,3 +10,5 @@ vboxmanage modifyvm "cuckoo1" --nic1 hostonly
 vboxmanage modifyvm "cuckoo1" --hostonlyadapter1 vboxnet0
 vboxmanage sharedfolder add "cuckoo1" --name "Shared" --hostpath /path/to/VirtualBox\ VMs/shared --automount
 cp /etc/cuckoo/agent/agent.py /path/to/VirtualBox\Vms/shared
+# https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi
+# http://effbot.org/media/downloads/PIL-1.1.7.win32-py2.7.exe
