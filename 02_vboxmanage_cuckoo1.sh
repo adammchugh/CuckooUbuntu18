@@ -5,9 +5,9 @@ echo Enter the name of this cuckoo machine:
 read cuckooname
 vboxmanage createvm --name "${cuckooname}" --ostype Windows10_64 --register
 vboxmanage modifyvm "${cuckooname}" --memory 1024 --acpi on --boot1 dvd --nic1 nat
-vboxmanage createhd --filename "/opt/cuckoos/cuckoo1/cuckoo1-hdd1.vdi" --size 18000
+vboxmanage createhd --filename "/opt/cuckoos/${cuckooname}/${cuckooname}-hdd1.vdi" --size 18000
 vboxmanage storagectl "${cuckooname}" --name "SATA Controller" --add sata --controller IntelAHCI
-vboxmanage storageattach "${cuckooname}" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "/opt/cuckoos/cuckoo1/cuckoo1-hdd1.vdi"
+vboxmanage storageattach "${cuckooname}" --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium "/opt/cuckoos/${cuckooname}/${cuckooname}-hdd1.vdi"
 vboxmanage storageattach "${cuckooname}" --storagectl "SATA Controller" --port 1 --device 0 --type dvddrive --medium host:/dev/sr0 --passthrough on
 vboxmanage hostonlyif create
 vboxmanage modifyvm "${cuckooname}" --nic1 hostonly
