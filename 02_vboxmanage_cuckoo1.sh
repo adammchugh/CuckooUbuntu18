@@ -16,4 +16,4 @@ vboxmanage modifyvm "${cuckooname}" --hostonlyadapter1 vboxnet0
 vboxmanage sharedfolder add "${cuckooname}" --name "Shared" --hostpath /opt/cuckoos/shared --automount
 cp /etc/cuckoo/agent/agent.py /opt/cuckoos/shared
 wget https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi -O /opt/cuckoos/shared/python-2.7.11.amd64.msi
-wget http://effbot.org/media/downloads/PIL-1.1.7.win32-py2.7.exe -O /opt/cuckoos/shared/PIL-1.1.7.win32-py2.7.exe
+wget https://github.com/lightkeeper/lswindows-lib/raw/master/amd64/python/PIL-1.1.7.win-amd64-py2.7.exe -O /opt/cuckoos/shared/PIL-1.1.7.amd64-py2.7.exe
