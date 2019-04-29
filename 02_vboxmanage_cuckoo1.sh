@@ -17,3 +17,6 @@ vboxmanage sharedfolder add "${cuckooname}" --name "Shared" --hostpath /opt/cuck
 cp /etc/cuckoo/agent/agent.py /opt/cuckoos/shared
 wget https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi -O /opt/cuckoos/shared/python-2.7.11.amd64.msi
 wget https://github.com/lightkeeper/lswindows-lib/raw/master/amd64/python/PIL-1.1.7.win-amd64-py2.7.exe -O /opt/cuckoos/shared/PIL-1.1.7.amd64-py2.7.exe
+echo "Set-ExecutionPolicy Unrestricted" >> /opt/cuckoos/shared/install_flarevm.ps1
+echo ". { iwr -useb http://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force" >> /opt/cuckoos/shared/install_flarevm.ps1
+echo "Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/fireeye/flare-vm/master/install.ps1" >> /opt/cuckoos/shared/install_flarevm.ps1
