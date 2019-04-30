@@ -13,6 +13,10 @@ vboxmanage hostonlyif create
 vboxmanage hostonlyif ipconfig vboxnet0 -–ip 192.168.56.1 –-netmask 255.255.255.0
 vboxmanage modifyvm "${cuckooname}" --nic1 hostonly
 vboxmanage modifyvm "${cuckooname}" --hostonlyadapter1 vboxnet0
+iptables -A FORWARD -o ens33 -i vboxnet0 -s 192.168.56.0/24 -m conntrack --ctstate NEW -j ACCEPT
+iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A POSTROUTING -t nat -j MASQUERADE
+sysctl -w net.ipv4.ip_forward=1
 vboxmanage sharedfolder add "${cuckooname}" --name "Shared" --hostpath /opt/cuckoos/shared --automount
 cp /etc/cuckoo/agent/agent.py /opt/cuckoos/shared
 wget https://www.python.org/ftp/python/2.7.11/python-2.7.11.amd64.msi -O /opt/cuckoos/shared/python-2.7.11.amd64.msi
