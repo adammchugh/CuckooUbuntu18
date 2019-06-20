@@ -13,9 +13,12 @@ vboxmanage hostonlyif create
 vboxmanage hostonlyif ipconfig vboxnet0 -–ip 192.168.56.1 –-netmask 255.255.255.0
 vboxmanage modifyvm "${cuckooname}" --nic1 hostonly
 vboxmanage modifyvm "${cuckooname}" --hostonlyadapter1 vboxnet0
-iptables -A FORWARD -o ens33 -i vboxnet0 -s 192.168.56.0/24 -m conntrack --ctstate NEW -j ACCEPT
-iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-iptables -A POSTROUTING -t nat -j MASQUERADE
+iptables -t nat -A POSTROUTING -o eth0 -s 192.168.56.0/24 -j MASQUERADE
+iptables -P FORWARD DROP
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s 192.168.56.0/24 -j ACCEPT
+iptables -A FORWARD -s 192.168.56.0/24 -d 192.168.56.0/24 -j ACCEPT
+iptables -A FORWARD -j LOG
 sysctl -w net.ipv4.ip_forward=1
 vboxmanage sharedfolder add "${cuckooname}" --name "Shared" --hostpath /opt/cuckoos/shared --automount
 cp /etc/cuckoo/agent/agent.py /opt/cuckoos/shared
