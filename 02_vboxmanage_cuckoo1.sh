@@ -5,6 +5,11 @@ mkdir /opt/cuckoos/ovas
 wget https://az792536.vo.msecnd.net/vms/VMBuild_20180425/VirtualBox/MSEdge/MSEdge.Win10.VirtualBox.zip
 # TODO: Unzip VirtualBox.zip
 
+vboxmanage hostonlyif create
+vboxmanage hostonlyif ipconfig vboxnet0 -–ip 192.168.56.1 –-netmask 255.255.255.0
+vboxmanage modifyvm Windows10 --nic1 hostonly
+vboxmanage modifyvm Windows10 --hostonlyadapter1 vboxnet0
+
 vboxmanage import Windows10.ova --vsys 0 --vmname Windows10_1 --cpus 1 --memory 1024 --unit 10 --disk /opt/cuckoos/Windows10_1.vmdk
 iptables -t nat -A POSTROUTING -o eth0 -s 192.168.56.0/24 -j MASQUERADE
 iptables -P FORWARD DROP
