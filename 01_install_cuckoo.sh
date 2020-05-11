@@ -7,9 +7,9 @@ sudo apt install libjpeg-dev zlib1g-dev swig ssdeep tcpdump mongodb volatility -
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
 sudo pip install -U weasyprint==0.42.2
 sudo pip install -U cuckoo
-sudo mkdir /etc/cuckoo
-sudo chmod 750 /etc/cuckoo
-sudo chmod -R $(whoami):$(whoami) /etc/cuckoo
+mkdir /etc/cuckoo
+chmod 750 /etc/cuckoo
+chmod -R $(whoami):$(whoami) /etc/cuckoo
 echo "export CUCKOO=/etc/cuckoo" >> ~/.bashrc
 export CUCKOO=/etc/cuckoo
 cuckoo --cwd /etc/cuckoo
