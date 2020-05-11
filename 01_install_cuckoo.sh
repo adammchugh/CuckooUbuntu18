@@ -9,7 +9,7 @@ sudo pip install -U weasyprint==0.42.2
 sudo pip install -U cuckoo
 sudo mkdir /etc/cuckoo
 sudo chmod 750 /etc/cuckoo
-sudo chmod -R cuckoo:cuckoo /etc/cuckoo
+sudo chmod -R $(whoami):$(whoami) /etc/cuckoo
 echo "export CUCKOO=/etc/cuckoo" >> ~/.bashrc
 export CUCKOO=/etc/cuckoo
 cuckoo --cwd /etc/cuckoo
