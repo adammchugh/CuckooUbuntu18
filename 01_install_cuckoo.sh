@@ -8,6 +8,10 @@ sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
 
 echo 'fs.file-max = 100000' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -w fs.file-max=100000
+sudo sysctl -p
+
+echo '*         hard    nofile      500000' | sudo tee -a /etc/security/limits.conf
+echo '*         soft    nofile      500000' | sudo tee -a /etc/security/limits.conf
 
 sudo pip3 install -U weasyprint==0.42.2
 sudo pip2 install -U pysistent==0.16.1
