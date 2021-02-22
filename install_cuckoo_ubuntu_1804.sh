@@ -55,6 +55,7 @@ vboxmanage modifyvm Windows10 --hostonlyadapter1 vboxnet0
 vboxmanage sharedfolder add Windows10 --name "Shared" --hostpath /opt/cuckoos/shared --automount
 
 # Install Cuckoo
+sudo python -m pip install -U pip
 sudo pip2 install -U weasyprint==0.42.2
 sudo pip2 install -U pyrsistent==0.16.1
 sudo pip2 install -U cryptography==3.2.0
