@@ -65,4 +65,4 @@ sudo chown -R $(whoami):$(whoami) /etc/cuckoo
 echo "export CUCKOO=/etc/cuckoo" >> ~/.bashrc
 export CUCKOO=/etc/cuckoo
 cuckoo --cwd /etc/cuckoo
-cuckoo community
+cuckoo --cwd /etc/cuckoo community
