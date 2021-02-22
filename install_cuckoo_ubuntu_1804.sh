@@ -37,7 +37,7 @@ wget https://patchmypc.com/freeupdater/PatchMyPC.exe -O /opt/cuckoos/shared/Patc
 # Configure network interfaces and IPTables
 vboxmanage hostonlyif create
 vboxmanage hostonlyif ipconfig vboxnet0 --ip 192.168.56.1 --netmask 255.255.255.0
-NETWORKINTERFACE = $(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}')
+NETWORKINTERFACE=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}')
 sudo iptables -t nat -A POSTROUTING -o "$NETWORKINTERFACE" -s 192.168.56.0/24 -j MASQUERADE
 sudo iptables -P FORWARD DROP
 sudo iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
