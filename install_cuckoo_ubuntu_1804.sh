@@ -56,7 +56,7 @@ vboxmanage sharedfolder add Windows10 --name "Shared" --hostpath /opt/cuckoos/sh
 
 # Install Cuckoo
 sudo pip3 install -U weasyprint==0.42.2
-sudo pip2 install -U pysistent==0.16.1
+sudo pip2 install -U pyrsistent==0.16.1
 sudo pip2 install -U cryptography==3.2.0
 sudo pip2 install -U cuckoo
 sudo mkdir /etc/cuckoo
