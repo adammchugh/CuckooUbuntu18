@@ -3,7 +3,7 @@
 # Install dependancies
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install python3 python3-pip python3-dev libffi-dev libssl-dev  -y
+sudo apt install python3 python3-pip python3-dev python python-pip libffi-dev libssl-dev  -y
 sudo apt install virtualbox virtualbox-guest-additions-iso virtualbox-dkms -y
 sudo apt install libjpeg-dev zlib1g-dev swig ssdeep tcpdump mongodb volatility -y
 sudo apt install unzip -y
