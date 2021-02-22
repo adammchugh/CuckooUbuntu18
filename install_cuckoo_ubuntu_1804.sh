@@ -52,6 +52,8 @@ sudo echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 vboxmanage import /opt/cuckoos/ovas/Windows10.ova --vsys 0 --vmname Windows10 --cpus 2 --memory 4096 --unit 10 --disk /opt/cuckoos/Windows10.vmdk
 vboxmanage modifyvm Windows10 --nic1 hostonly
 vboxmanage modifyvm Windows10 --hostonlyadapter1 vboxnet0
+vboxmanage modifyvm Windows10 --ioapic off
+vboxmanage modifyvm Windows10 --paravirtprovider none
 vboxmanage sharedfolder add Windows10 --name "Shared" --hostpath /opt/cuckoos/shared --automount
 
 # Install Cuckoo
